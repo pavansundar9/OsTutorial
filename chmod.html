@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>chmod Command in Linex</title>
+    <link rel="stylesheet" href="task1_2.css">
+    <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia&effect=neon|outline|emboss|shadow-multiple"> -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=PT+Serif:ital@1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <br><br>
+    <div class="chmodcommand">
+        <br>
+        <h3>chmod command:</h3> <br>
+        <p>Linux chmod command is used to change the access permissions of files and directories. It stands for change mode. It can not change the permission of symbolic links. 
+            Even, it ignores the symbolic links come across recursive directory traversal.<br></p><br>
+        <p><h4>The basic syntax of chmod command is as follows:</h4><br><div class="syntax"><p>chmod &lt;options&gt; &lt;permissions&gt; &lt;file name&gt; </p></div></p><br>
+        <p>In the Linux file system, each file is associated with a particular owner and have permission access for different users. The user classes may be:
+            
+            <li class="list">owner(u): file's owner</li>
+            <li class="list">group member(g): users who are members of the file's group</li>
+            <li class="list">Others (Everybody else): users who are neither the file's owner nor members of the file's group</li>
+        </p><br>
+        <p>
+            The file permissions in Linux are the following three types:
+            <li class="list">read(r): Permission to read the file.</li>
+            <li class="list">write(w): Permission to write (or delete) the file.</li>
+            <li class="list">execute(x): Permission to execute the file, or, in
+                the case of a directory, search it.</li>
+        </p><br>
+        <ul class="list">
+            <li class="list"><div><b>-c, --changes</b></div><div>: It is similar to the verbose option, but the difference is that it is reported if a change has been made.</div></li><br>
+            <li class="list"><div><b>-f, --silent, --quiet</b></div><div>:It is used to suppress the error messages.</div></li><br>
+            <li class="list"><div><b>-v, --verbose</b></div><div>: It is used to display a diagnostic for every processed file.</div></li><br>
+            <li class="list"><div><b>--no-preserve-root</b></div><div>:It is used for not treating the backslash symbol ('/'), especially (the default).</div></li><br> 
+        </ul>
+        <br>
+    </div>
+    <div>
+        <button id="back" class="back" onclick="back()"><i class="fa fa-angle-left" style="font-size:18px"></i>&nbsp;Back</button>
+    </div>
+    <script>
+        document.getElementById("back").onclick =function(){
+                location.href="linex.html";
+        }
+    </script>
+<br>
+</body>
+</html>

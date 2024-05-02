@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deadlock Checker</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia&effect=neon|outline|emboss|shadow-multiple">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+</head>
+<body>
+    <div class="main">
+        <div class="navbar">
+            <div class="nav-container">
+                <div class="icon">
+                    <h2 class="font-effect-outline" style="color: coral;">MuRP</h2>
+                </div>
+                <div class="menu">
+                    <ul>
+                        <li><a href="index.html">HOME</a></li>
+                        <li><a href="#">ABOUT</a></li>
+                        <li><a href="#">SERVICE</a></li>
+                        <li><a href="#">DESIGN</a></li>
+                        <li><a href="#">CONTACT</a></li>
+                    </ul>
+                </div>
+                <div class="search">
+                    <input class="srch" type="search" name="" placeholder="Type to search">
+                    <a href="#"><input type="button" value="Search"></a>
+                </div>                
+            </div>
+        </div>
+    </div>
+  
+    <center><h1>Deadlock Checker</h1></center>
+    <div class="fcfs_content">
+        <div id="inputContainer">
+            <div class="generate">
+                <div>
+                    <label for="numProcesses">Number of Processes:</label>
+                    <input type="number" id="numProcesses">
+                </div>
+                <div>
+                    <label for="numResources">Number of Resources:</label>
+                    <input type="number" id="numResources">
+                </div>
+                <div class="generateTableButton">
+                    <button id="generateTableButton">Generate Table</button>    
+                </div>
+            </div>
+            <table id="processesTable">
+                <thead>
+                    <tr>
+                        <th>Process</th>
+                        <th>Waiting Resource</th>
+                    </tr>
+                </thead>
+                <tbody id="processesTableBody">
+                    <tr>
+                        <td>
+                            <input type="text" class="process" placeholder="Enter process name">
+                        </td>
+                        <td>
+                            <input type="text" class="waitingResource" placeholder="Enter waiting resource">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        
+            <div class="buttons">
+                <button id="addRowButton">Add Row</button>
+                <button id="deleteRowButton">Delete Row</button>
+                <button id="checkDeadlockButton">Check for Deadlock</button>
+            </div>
+          </div>
+        
+          <div id="result" class="font-effect-outline"></div>
+          <div id="graphContainer">
+            <div id="graph"></div>
+          </div>
+    </div>
+    <div>
+        <button id="back" class="back" onclick="back()"><i class="fa fa-angle-left" style="font-size:18px"></i>&nbsp;Back</button>
+    </div>
+  <script>
+    const resultDiv = document.getElementById('result');
+
+
+    // Function to generate the waiting resource graph
+    function generateWaitingResourceGraph(processes, waitingResources) {
+      const graph = new Map();
+
+      for (let i = 0; i < processes.length; i++) {
+        const process = processes[i];
+        const waitingResource = waitingResources[i];
+
+        if (!graph.has(process)) {
+          graph.set(process, new Set());
+        }
+
+        graph.get(process).add(waitingResource);
+      }
+
+      return graph;
+    }
+
+    // Function to detect deadlocks in the waiting resource graph
+    function detectDeadlocks(waitingResourceGraph) {
+        const visited = new Set();
+        const stack = [];
+
+        let explanation = ''; // Explanation of the graph and deadlock detection
+        let result ='';
+
+        explanation += 'Resource Allocation Graph:\n';
+
+        for (const [process, waitingResources] of waitingResourceGraph) {
+            explanation += `${process} is waiting for: ${[...waitingResources]}\n`;
+        }
+
+        explanation += '\nDeadlock Detection:\n';
+
+        for (const process of waitingResourceGraph.keys()) {
+            if (!visited.has(process)) {
+            stack.push(process);
+
+            while (stack.length > 0) {
+                const currentProcess = stack.pop();
+                visited.add(currentProcess);
+
+                const waitingResources = waitingResourceGraph.get(currentProcess);
+
+                if (waitingResources && waitingResources.size > 0) { // Check if waitingResources is defined and not empty
+                for (const waitingResource of waitingResources) {
+                    if (!visited.has(waitingResource)) {
+                        stack.push(waitingResource);
+                    } else {
+                        result = `Deadlock Detected: The system is in a deadlock state.`
+                        explanation += `Deadlock Detected: The system is in a deadlock state.\n`;
+                        resultDiv.textContent = result;
+                        return explanation; // Deadlock detected
+
+                    }
+                }
+                }
+            }
+            }
+        }
+        result = 'No Deadlock Detected: The system is not in a deadlock state.\n';
+        explanation += 'No Deadlock Detected: The system is not in a deadlock state.\n';
+        resultDiv.textContent = result;
+
+        return explanation; // No deadlocks detected
+        
+    }
+
+    // Function to check for deadlocks
+    function checkDeadlock() {
+      const processesTableBody = document.getElementById('processesTableBody');
+      const rows = processesTableBody.rows;
+
+      // Extract process and waiting resource data
+      const processes = [];
+      const waitingResources = [];
+
+      for (let i = 0; i < rows.length; i++) {
+        const processInput = rows[i].getElementsByClassName('process')[0];
+        const resourceInput = rows[i].getElementsByClassName('waitingResource')[0];
+
+        const processName = processInput.value.trim();
+        const resource = resourceInput.value.trim();
+
+        if (processName && resource) {
+          processes.push(processName);
+          waitingResources.push(resource);
+        }
+      }
+
+      // Generate the waiting resource graph
+      const waitingResourceGraph = generateWaitingResourceGraph(processes, waitingResources);
+
+      // Detect deadlocks and get explanation
+      const explanation = detectDeadlocks(waitingResourceGraph);
+
+
+      const graphDiv = document.getElementById('graph');
+      graphDiv.textContent = explanation;
+    }
+
+    // Add event listeners to buttons
+    document.getElementById('generateTableButton').addEventListener('click', function() {
+      const numProcesses = parseInt(document.getElementById('numProcesses').value);
+      const numResources = parseInt(document.getElementById('numResources').value);
+
+      generateTable(numProcesses, numResources);
+    });
+
+    document.getElementById('addRowButton').addEventListener('click', function() {
+      addRow();
+    });
+
+    document.getElementById('deleteRowButton').addEventListener('click', function() {
+      deleteRow();
+    });
+
+    document.getElementById('checkDeadlockButton').addEventListener('click', checkDeadlock);
+
+    // Function to generate the table
+    function generateTable(numProcesses, numResources) {
+      const processesTableBody = document.getElementById('processesTableBody');
+      processesTableBody.innerHTML = '';
+
+      for (let i = 1; i <= numProcesses; i++) {
+        const row = processesTableBody.insertRow();
+        const processCell = row.insertCell(0);
+        const resourceCell = row.insertCell(1);
+
+        const processInput = document.createElement('input');
+        processInput.type = 'text';
+        processInput.className = 'process';
+        processInput.placeholder = 'Enter process name';
+        processCell.appendChild(processInput);
+
+        const resourceInput = document.createElement('input');
+        resourceInput.type = 'text';
+        resourceInput.className = 'waitingResource';
+        resourceInput.placeholder = 'Enter waiting resource';
+        resourceCell.appendChild(resourceInput);
+      }
+    }
+
+    // Function to add a row to the table
+    function addRow() {
+      const processesTableBody = document.getElementById('processesTableBody');
+      const row = processesTableBody.insertRow();
+      const processCell = row.insertCell(0);
+      const resourceCell = row.insertCell(1);
+
+      const processInput = document.createElement('input');
+      processInput.type = 'text';
+      processInput.className = 'process';
+      processInput.placeholder = 'Enter process name';
+      processCell.appendChild(processInput);
+
+      const resourceInput = document.createElement('input');
+      resourceInput.type = 'text';
+      resourceInput.className = 'waitingResource';
+      resourceInput.placeholder = 'Enter waiting resource';
+      resourceCell.appendChild(resourceInput);
+    }
+
+    // Function to delete a row from the table
+    function deleteRow() {
+      const processesTableBody = document.getElementById('processesTableBody');
+      if (processesTableBody.rows.length > 1) {
+        processesTableBody.deleteRow(-1);
+      }
+    }
+    document.getElementById("back").onclick =function(){
+        location.href="deadlock.html";
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SCAN SCHEDULING ALGORITHM</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia&effect=neon|outline|emboss|shadow-multiple">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <script type="text/javascript" src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="main">
+        <div class="navbar">
+            <div class="nav-container">
+                <div class="icon">
+                    <h2 class="font-effect-outline" style="color: coral;">MuRP</h2>
+                </div>
+                <div class="menu">
+                    <ul>
+                        <li><a href="#">HOME</a></li>
+                        <li><a href="#">ABOUT</a></li>
+                        <li><a href="#">SERVICE</a></li>
+                        <li><a href="#">DESIGN</a></li>
+                        <li><a href="#">CONTACT</a></li>
+                    </ul>
+                </div>
+                <div class="search">
+                    <input class="srch" type="search" name="" placeholder="Type to search">
+                    <a href="#"><input type="button" value="Search"></a>
+                </div>                
+            </div>
+        </div>
+
+        <h1 style="text-align: center;">SCAN Disk Scheduling</h1>
+        <div class="fcfs_content">
+            <p>SCAN (Elevator) is a disk scheduling algorithm that moves the disk arm towards the end of the disk until the requested track is found or until the end of the disk is reached. Then, it reverses direction and moves the disk arm back towards the beginning of the disk, again, until the requested track is found or until the beginning of the disk is reached. SCAN works as an elevator moving up and down the disk to service requests.</p>
+            <div class="input_output">
+                <div class="user_input">
+                    <div class="advDis">
+                        <ul>
+                            <h3>Advantages:</h3>
+                            <li>Prevents the starvation of tracks</li>
+                            <li>Improves the response time of requests</li>
+                        </ul>
+                        <ul>
+                            <h3>Disadvantages:</h3>
+                            <li>Not necessarily the fastest disk scheduling algorithm</li>
+                            <li>May result in poor response time for distant tracks</li>
+                        </ul>
+                    </div>
+                    <div class="container">
+                        <input type="text" id="text1" placeholder="Enter order of request sequence:"><br>
+                        <input type="text" id="text2" placeholder="Enter read/write head position:"><br>
+                        <div>
+                            <input type="button" class="button" id="button1" value="Add" onclick="add_element_to_array()">
+                            <input type="button" class="button" id="button2" value="Remove" onclick="remove_array()"><br><br>
+                        </div>
+                        <div class="request_table">
+                            <table id="mytable"></table>
+                        </div>
+                        <div id="explanationContainer"></div>
+                        <center><input type="submit" class="Sbutton" value="SUBMIT IT" onclick="myfun()" id="continue"></center>
+                    
+                        <p id="t2"></p>
+                    </div>
+                </div>
+                <div class="chartContainer">
+                    <div id="chartContainer" style="width: 720px; height: 100%;margin: 0px auto;"></div>
+                </div>
+            </div>
+        </div>
+        <div>
+            <button id="back" class="back" onclick="back()"><i class="fa fa-angle-left" style="font-size:18px"></i>&nbsp;Back</button>
+        </div>
+    </div>
+    <script>
+        var x = 0,p=1;
+        
+        var array1 = Array();
+        
+        var q = document.getElementById("mytable");
+
+
+        var chart = new CanvasJS.Chart("chartContainer", {
+            title: {
+                text: "Adding & Updating dataPoints"
+            },
+            axisX2: {
+                title: "Secondary X Axis",
+            },
+            axisY: {
+                reversed: true
+            },
+            data: [{
+                axisXType: "secondary",
+                type: "line",
+                dataPoints: []
+            }],
+            animationEnabled: true,
+            animationDuration: 2000
+        });
+        chart.render();
+
+        function add_element_to_array() {
+            array1[x] = document.getElementById("text1").value;
+
+            var row = q.insertRow(-1);
+            var cell1 = row.insertCell(0);
+            var cell2 = row.insertCell(1);
+            cell1.innerHTML = "process: " + p + " -->";
+            cell2.innerHTML = array1[x];
+            var container = document.querySelector('.request_table');
+            container.appendChild(q);
+
+            x++;
+            p++;
+            document.getElementById("text1").value = "";
+        }
+
+        function remove_array()
+        {
+            array1.pop();
+            var x = document.getElementById("mytable").rows.length;
+            document.getElementById("mytable").deleteRow(x-1);
+            console.log(array1);
+            p--;
+        }
+
+        function myfun() {
+            console.log(array1);
+
+            const array = array1.map((i) => Number(i));
+            console.log(array);
+            var head = parseInt(document.getElementById('text2').value);
+            var seek = 0;
+
+            var left = [];
+            var right = [];
+            var seq = [];
+
+            // Combine filtering and sorting in a single loop
+            array.forEach(value => {
+                if (value < head) {
+                    left.push(value);
+                } else {
+                    right.push(value);
+                }
+            });
+
+            left.sort((a, b) => a - b);
+            right.sort((a, b) => a - b);
+
+            console.log(left);
+            console.log(right);
+
+            // seek = seek + Math.abs(199 - head);
+
+            // Calculate the initial seek distance from the head to the first request
+            if (left.length > 0 && right.length > 0) {
+                seek = Math.min(Math.abs(left[0] - head), Math.abs(right[0] - head));
+            } else if (left.length > 0) {
+                seek = Math.abs(left[0] - head);
+            } else if (right.length > 0) {
+                seek = Math.abs(right[0] - head);
+            }
+
+            var count = 0;
+            addPoint(head, count);
+            count++;
+
+            for (var i = 0; i < right.length; i++) {
+                cur = right[i];
+                addPoint(cur, count);
+                count++;
+                seq.push(cur);
+                head = cur;
+                if (i < right.length - 1) {
+                    seek += Math.abs(right[i + 1] - right[i]);
+                }
+            }
+
+            if (head != 199) {
+                head = 199;
+                addPoint(199, count);
+                count++;
+                seq.push(head);
+                seek += Math.abs(199 - right[right.length - 1]);
+            }
+
+            for (var i = left.length - 1; i >= 0; --i) {
+                cur = left[i];
+                addPoint(cur, count);
+                count++;
+                seq.push(cur);
+                head = cur;
+                if (i > 0) {
+                    seek += Math.abs(left[i - 1] - left[i]);
+                }
+            }
+
+            // seek = seek + Math.abs(199 - head);
+            explanation();
+            document.getElementById("t2").innerHTML = "the number of movement for SCAN =" + seek;
+
+            console.log(seq);
+        }
+    function explanation() {
+        // Your algorithm logic to calculate movement
+        var array = array1.map(Number); // Convert array elements to numbers
+        var head = parseInt(document.getElementById('text2').value); // Get the head position
+        var seek = 0;
+        var movementExplanation = "<h2>SCAN Disk Scheduling Movement Explanation</h2>";
+
+        // Sort requests into left and right based on head position
+        var left = array.filter(item => item < head);
+        var right = array.filter(item => item >= head);
+
+        // Sort left and right arrays
+        left.sort((a, b) => a - b);
+        right.sort((a, b) => a - b);
+
+        // Movement towards the right
+        for (var i = 0; i < right.length; i++) {
+            movementExplanation += "<p>The head moves towards the end of the disk servicing request " + right[i] + ".</p>";
+            seek += Math.abs(right[i] - head);
+            head = right[i];
+        }
+
+        // Movement towards the left
+        for (var i = left.length - 1; i >= 0; i--) {
+            movementExplanation += "<p>The head moves towards the beginning of the disk servicing request " + left[i] + ".</p>";
+            seek += Math.abs(left[i] - head);
+            head = left[i];
+        }
+
+        // Display the total movement
+        movementExplanation += "<p>After servicing the requests, the head moves towards the end of the disk until it reaches position 199.</p>";
+        movementExplanation += "<p>So, the total movement for SCAN Disk Scheduling is " + seek + ".</p>";
+
+        // Display the explanation
+        document.getElementById("explanationContainer").innerHTML = movementExplanation;
+    }
+
+    function addPoint(xValue, count) {
+        chart.options.data[0].dataPoints.push({ x: xValue, y: count });
+        chart.render();
+    }
+
+    document.getElementById("back").onclick =function(){
+        location.href="diskSchedule.html";
+    }
+    </script>
+</body>
+</html>

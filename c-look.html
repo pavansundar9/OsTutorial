@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>C-LOOK</title>
+    <link rel="stylesheet" href="style.css">
+    <script type="text/javascript" src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia&effect=neon|outline|emboss|shadow-multiple">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <div class="main">
+        <div class="navbar">
+            <div class="nav-container">
+                <div class="icon">
+                    <h2 class="font-effect-outline" style="color: coral;"><a href="index.html">MuRP</a></h2>
+                </div>
+                <div class="menu">
+                    <ul>
+                        <li><a href="#">HOME</a></li>
+                        <li><a href="#">ABOUT</a></li>
+                        <li><a href="#">SERVICE</a></li>
+                        <li><a href="#">DESIGN</a></li>
+                        <li><a href="#">CONTACT</a></li>
+                    </ul>
+                </div>
+                <div class="search">
+                    <input class="srch" type="search" name="" placeholder="Type to search">
+                    <a href="#"><input type="button" value="Search"></a>
+                </div>                
+            </div>
+        </div>
+        
+
+        <h1 style="text-align: center;">C-LOOK</h1>
+        
+        <div class="fcfs_content">
+            <p>As LOOK is similar to SCAN algorithm, in similar way, CLOOK is similar to CSCAN disk scheduling algorithm. In CLOOK, the disk arm in spite of going to the end goes only to the last request to be serviced in front of the head and then from there goes to the other end’s last request. Thus, it also prevents the extra delay which occurred due to unnecessary traversal to the end of the disk.</p>
+
+            <div class="input_output">
+                <div class="user_input">
+                    <div class="advDis">
+                        <ul>
+                            <h3>Advantages:</h3>
+                            <li>In C-LOOK the head does not have to move till the end of the disk if there are no requests to be serviced</li>
+                            <li>Better performance is provided compared to SCAN Algorithm</li>
+                            <li>There is less waiting time for the cylinders which are just visited by the head in C-LOOK</li>
+                            <li>Starvation is avoided in C-LOOK</li>
+                            <li>Low variance is provided in waiting time and response time</li>
+                        </ul>
+                        <ul>
+                            <h3>Disadvantages:</h3>
+                            <li>In C-LOOK an overhead of finding the end requests is present.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="container">
+                        <input type="text" id="text1" placeholder="Enter order of request sequence:"><br>
+                        <input type="text" id="text2" placeholder="Enter read/write head position:"><br>
+                        <div>
+                            <input type="button" class="button" id="button1" value="Add" onclick="add_element_to_array()">
+                            <input type="button" class="button" id="button2" value="Remove" onclick="remove_array()"><br><br>
+                        </div>
+                        <div class="request_table">
+                            <table id="mytable"></table>
+                        </div>
+                        <div id="explanationContainer"></div>
+                        <center><input type="submit" class="Sbutton" value="SUBMIT IT" onclick="myfun()" id="continue"></center>
+                    
+                        <p id="t2"></p>
+                    </div>
+                </div>
+                <div class="chartContainer">
+                    <div id="chartContainer" style="width: 720px; height: 100%;margin: 0px auto;"></div>
+                </div>          
+            </div>
+        </div>
+        <div>
+            <button id="back" class="back" onclick="back()"><i class="fa fa-angle-left" style="font-size:18px"></i>&nbsp;Back</button>
+        </div>
+    </div>
+
+    <script>
+    var x = 0, p = 1;
+    var array1 = [];
+    var q = document.getElementById("mytable");
+
+    var chart = new CanvasJS.Chart("chartContainer", {
+        title: {
+            text: "Adding & Updating dataPoints"
+        },
+        axisX2: {
+            title: "Secondary X Axis",
+        },
+        axisY: {
+            reversed: true
+        },
+        data: [{
+            axisXType: "secondary",
+            type: "line",
+            dataPoints: []
+        }],
+        animationEnabled: true,
+        animationDuration: 2000
+    });
+    chart.render();
+    var head = 0;
+    var seek_count = 0;
+
+    function add_element_to_array() {
+        var input = document.getElementById("text1").value;
+        var tracks = input.split(" ").map(function(track) {
+            return parseInt(track);
+        });
+
+        for (var i = 0; i < tracks.length; i++) {
+            if (!isNaN(tracks[i])) {
+                array1.push(tracks[i]);
+                array1.sort(function (a, b) { return a - b; });
+
+                var row = q.insertRow(-1);
+                var cell1 = row.insertCell(0);
+                var cell2 = row.insertCell(1);
+                cell1.innerHTML = "process: " + p + " -->";
+                cell2.innerHTML = tracks[i];
+                p++;
+            }
+        }
+
+        document.getElementById("text1").value = "";
+    }
+
+    function remove_array() {
+        if (array1.length > 0) {
+            array1.pop();
+            var x = document.getElementById("mytable").rows.length;
+            document.getElementById("mytable").deleteRow(x - 1);
+            p--;
+        }
+    }
+
+    function addPoint(xValue, count) {
+        chart.options.data[0].dataPoints.push({ x: xValue, y: count });
+        chart.render();
+    }
+    function resetChart() {
+        // Clear the data points from the chart
+        chart.options.data[0].dataPoints = [];
+        chart.render();
+    }
+    function myfun() {
+        // resetChart();
+        console.log(array1);
+        if (array1.length === 0) {
+            return;
+        }
+
+        // Sort the requests
+        array1.sort(function (a, b) {
+            return a - b;
+        });
+
+        seek_count = 0;
+        var head = parseInt(document.getElementById('text2').value);
+        addPoint(head, 0);
+
+        var movementExplanation = "<h2>C-LOOK Disk Scheduling Movement Explanation</h2>";
+
+        // Service the requests in the direction of the head
+        var direction = head < array1[0] ? 1 : -1; // Determine the initial direction
+        var i = direction === 1 ? 0 : array1.length - 1; // Set the starting index based on the direction
+
+        while (i >= 0 && i < array1.length) {
+            var cur_track = array1[i];
+            addPoint(cur_track, p++);
+            movementExplanation += `<p>The head moves from track ${head} to track ${cur_track}.</p>`;
+            seek_count += Math.abs(cur_track - head);
+            head = cur_track;
+            i += direction; // Move to the next track in the same direction
+        }
+
+        movementExplanation += `<p>So, the total movement for C-LOOK Disk Scheduling is ${seek_count}.</p>`;
+
+        document.getElementById("t2").innerHTML = "Number of movements for C-LOOK = " + seek_count;
+        document.getElementById("explanationContainer").innerHTML = movementExplanation;
+        console.log(seek_count);
+    }
+    document.getElementById("back").onclick = function () {
+        location.href = "diskSchedule.html";
+    }
+    </script>
+</body>
+</html>

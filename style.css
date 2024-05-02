@@ -1,0 +1,1137 @@
+@import url('https://fonts.googleapis.com/css2?family=Bungee+Shade&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, rgba(0,0,0,0.5)20%, rgba(0,0,0,0.5)20%), url(os.jpg);
+    background-position: center;
+    background-size: cover;
+    /* background-repeat: no-repeat; */
+    /* background-size: 100% 100%; */
+    
+    font-family: "Sofia", sans-serif;
+}
+
+.navbar {
+    height: 75px;
+    display: flex;
+    align-items: center;
+    margin: 0 20px;
+}
+
+.nav-container {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.icon {
+    height: 70px;
+    display: flex; /* Added display: flex */
+    align-items: center; /* Vertically center the icon within the navbar */
+}
+/* .font-effect-outline{
+    margin-left: 20px;
+} */
+a{
+    text-decoration: none;
+    color: inherit;
+}
+
+h2 {
+    margin: 0; /* Remove top margin */
+    font-size: 30px;
+}
+
+.menu ul {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+    justify-content: space-between;
+}
+
+.menu li {
+    margin: 0 40px; /* Adjust spacing between menu items */
+    font-size: 14px;
+}
+
+.menu a {
+    text-decoration: none;
+    color: antiquewhite;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    transition: color 0.3s ease-in-out;
+}
+
+.menu a:hover {
+    color: coral;
+}
+
+.search {
+    display: flex;
+    align-items: center;
+}
+
+.srch,#page-reference,#page-frames {
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+    width: 180px;
+}
+
+input[type="button"],.searchbtn {
+    background-color: coral;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 8px 16px;
+    margin-left: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    width: auto;
+    height: auto;
+    font-size: 15px;
+
+}
+
+input[type="button"]:hover {
+    background-color: #ff6f40;
+}
+
+
+/* input[type="button"] {
+    background-color: rgb(100, 87, 87);
+} */
+.h2{
+    text-align: center;
+    color: bisque;
+    font-family: "Sofia", sans-serif;
+}
+
+/* CSS for linex.html */
+
+.commands{
+    margin-left: 20%;
+    margin-right: 20%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 5px;
+    grid-template-rows: repeat(4, 1fr);
+    grid-template-columns: repeat(5, 1fr);
+    grid-gap: 10px;
+}
+.box2 {
+    font-family: 'PT Serif', serif;
+    margin: 0 auto;
+    margin-top: 50px;
+    text-align: center;
+    background-color: rgb(7, 145, 7);
+    width: fit-content;
+    padding: 10px;
+    height: 50px;
+    color: black;
+    border: 5px solid black;
+}
+
+.linex_btn{
+    width: 90px;
+    height: 45px;
+    font-size: 20px;
+    font-family: 'PT Serif', serif;
+    background-color:rgb(177, 79, 10);
+    color: black;
+    border: 5px solid black;
+    outline: 0;
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+    cursor: pointer;
+    border: 2px solid black;
+    transition: box-shadow 0.5s ease-in-out, border-color 0.5s ease-in-out;
+}
+.scheduleHeading{
+    width: 300px;
+    height: auto;
+    color: rgb(247, 247, 195);
+    background-color: rgb(20, 17, 17);
+    margin-left: 5px;
+    text-align: center;
+    border-radius: 50px;
+    border: 3px solid blueviolet;
+    font-size: x-large;
+}
+.box{
+    margin-top: 75px;
+    margin-left: 37%;
+    align-content: center;
+    border: solid coral;
+    background-color: black;
+    width: 350px;
+}
+.box1{
+    font-family: "Sofia", sans-serif;
+    margin-left: 37%;
+    align-content: center;
+    border: solid coral;
+    background-color: black;
+    width: 350px;
+    margin-top: 5px;
+    font-size: 30px;
+    color: coral;
+}
+.back{
+    text-align: center;
+    margin-top: 50px;
+    margin-left: 5%;
+    background-color:rgb(7, 145, 7);
+    width: auto;
+    padding: 10px;
+    height: 50px;
+    text-align: center;
+    color: black;
+    font-family: 'PT Serif', serif;
+    border: 5px solid black;
+}
+.is , .top, .mkdir, .rm,.rmdir,.chmod,.cp,.cd,.pwd,.cat,.mv,.find,.du,.kill,.chown,.tar,.sudo{
+    min-width: 90px;
+    height: 45px;
+    font-size: 20px;
+    font-family: 'PT Serif', serif;
+    background-color:rgb(177, 79, 10);
+    color: black;
+    border: 5px solid black;
+    outline: 0;
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+    cursor: pointer;
+    border: 2px solid black;
+    transition: box-shadow 0.5s ease-in-out, border-color 0.5s ease-in-out;
+}
+.content{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 20px;
+    margin: 10px;
+    padding: 10px;
+    /* background-color: blue; */
+}
+.diskcontent{
+    margin: 30px;
+    border: solid black;
+}
+.conatiner{
+    display: grid;
+    grid-template-columns: 1fr 2fr ;
+}
+.con{
+    margin-top: 40px;
+    font-family: "Sofia", sans-serif;
+    font-size: 20px;
+}
+.left{
+    text-align: right;
+}
+button{
+    width: 260px;
+    min-height: 35px;
+    font-size: 20px;
+    font-family: "Sofia", sans-serif;
+}
+.btn1{
+    background-color:rgb(148, 204, 148);
+    border: 2px solid rgb(36, 31, 31);
+}
+
+.btn2{
+    background-color: rgb(212, 176, 85);
+    border: 2px solid rgb(36, 31, 31);
+}
+.btn3{
+    border: 2px solid rgb(36, 31, 31);
+    background-color: rgb(131, 172, 247);
+}
+.btn4{
+    border: 2px solid rgb(36, 31, 31);
+    background-color:rgb(190, 166, 212);
+}
+.btn5{
+    border: 2px solid rgb(36, 31, 31);
+    background-color:rgb(137, 155, 155);
+}
+.btn6{
+    border: 2px solid rgb(36, 31, 31);
+    background-color: rgb(240, 184, 144);
+}
+.btn1, .fcfs {
+    outline: 0;
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+    cursor: pointer;
+    border: 2px solid black;
+    background:rgb(148, 204, 148);
+    color: #000;
+    font-weight: 600;
+    transition: box-shadow 0.5s ease-in-out, border-color 0.5s ease-in-out;
+}
+.bt{
+    height: 1000px;
+}
+.btn1:hover, .fcfs:hover, .cpuScheduling {
+    background-color: rgb(148, 204, 148);
+    color: #000;
+    box-shadow: 0 0 5px rgb(148, 204, 148),
+                0 0 20px rgb(148 204 148 / 0.8),
+                0 0 35px rgba(148, 204, 148, 0.7),
+                0 0 50px rgba(148, 204, 148, 0.6);
+    border-color: #fff;
+}
+.btn2, .sstf {
+    outline: 0;
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+    cursor: pointer;
+    border: 2px solid black;
+    background:rgb(212, 176, 85);
+    color: #000;
+    font-weight: 600;
+    transition: box-shadow 0.5s ease-in-out, border-color 0.5s ease-in-out;
+}
+.btn2:hover, .sstf:hover {
+    background-color: rgb(212, 176, 85);
+    color: #000;
+    box-shadow: 0 0 5px rgb(212, 176, 85),
+                0 0 20px rgb(212 176 0 / 0.8),
+                0 0 35px rgb(212 176 0 / 0.7),
+                0 0 50px rgb(212 176 0 / 0.6);
+    border-color: #fff;
+}
+.btn3, .scan {
+    outline: 0;
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+    cursor: pointer;
+    border: 2px solid black;
+    background:rgb(131, 172, 247);
+    color: #000;
+    font-weight: 600;
+    transition: box-shadow 0.5s ease-in-out, border-color 0.5s ease-in-out;
+}
+.btn3:hover, .scan:hover {
+    background-color: rgb(131, 172, 247);
+    color: #000;
+    box-shadow: 0 0 5px rgb(131, 172, 247),
+                0 0 20px rgb(130 172 200 / 0.8),
+                0 0 35px rgb(130 172 190 / 0.7),
+                0 0 50px rgb(130 180 180 / 0.6);
+    border-color: #fff;
+}
+.btn4, .cscan {
+    outline: 0;
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+    cursor: pointer;
+    border: 2px solid black;
+    background:rgb(190, 166, 212);
+    color: #000;
+    font-weight: 600;
+    transition: box-shadow 0.5s ease-in-out, border-color 0.5s ease-in-out;
+}
+.btn4:hover, .cscan:hover {
+    background-color:rgb(190, 166, 212);
+    color: #000;
+    box-shadow: 0 0 5px rgb(190, 166, 212),
+                0 0 20px rgb(190 166 212 / 0.8),
+                0 0 35px rgb(190 166 212 / 0.7),
+                0 0 50px rgb(190 166 212 / 0.6);
+    border-color: #fff;
+}
+.btn5, .look {
+    outline: 0;
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+    cursor: pointer;
+    border: 2px solid black;
+    background:rgb(137, 155, 155);
+    color: #000;
+    font-weight: 600;
+    transition: box-shadow 0.5s ease-in-out, border-color 0.5s ease-in-out;
+}
+.btn5:hover, .look:hover {
+    background-color:rgb(137, 155, 155);
+    color: #000;
+    box-shadow: 0 0 5px rgb(137, 155, 155),
+                0 0 20px rgb(137 155 155 / 0.8),
+                0 0 35px rgb(137 155 155 / 0.7),
+                0 0 50px rgb(137 155 155 / 0.6);
+    border-color: #fff;
+}
+.btn6, .clook {
+    outline: 0;
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+    cursor: pointer;
+    border: 2px solid black;
+    background:rgb(240, 184, 144);
+    color: #000;
+    font-weight: 600;
+    transition: box-shadow 0.5s ease-in-out, border-color 0.5s ease-in-out;
+}
+.btn6:hover, .clook:hover {
+    background-color: rgb(240, 184, 144);
+    color: #000;
+    box-shadow: 0 0 5px rgb(240, 184, 144),
+                0 0 20px rgb(240 184 144 / 0.8),
+                0 0 35px rgb(240 184 144 / 0.7),
+                0 0 50px rgb(240 184 144/ 0.6);
+    border-color: #fff;
+}
+.back:hover{
+    background-color: rgb(23, 155, 21);
+    color: black;
+    box-shadow: 0 0 5px rgb(7, 65, 7),
+                0 0 20px rgba(38, 90, 38, 0.8),
+                0 0 35px rgba(21, 83, 21, 0.7),
+                0 0 50px rgba(7 140 7/ 0.6);
+    border-color:antiquewhite;
+}
+
+
+/*CSS for cpuScheduling*/
+.content1{
+    background-color: rgb(212, 176, 85);
+    border: 5px solid black;
+    border-radius: 25px;
+    width: auto;
+    padding: 50px;
+    margin: 50px;
+}
+.preferences {
+    list-style: none;
+}
+#algorithms-form {
+    display: flex;
+}
+#algo {
+    margin-left: 20px;
+    border-radius: 10px;
+    padding: 10px;
+    width: auto;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 30px;
+}
+
+thead, th, tbody, td {
+    border: 2px solid brown;
+    padding: 5px;
+    text-align: center;
+    font-weight: bold;
+}
+
+tbody input {
+    border: none;
+    text-align: center;
+    background-color: transparent;
+    width: 100%;
+}
+.process-btn {
+    height: 5px;
+}
+.btn {
+    display: flex;
+}
+.priority {
+    display: flex;
+    margin: 10px;
+}
+#priority-toggle-btn {
+    margin-left: 20px;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 0 0;
+    width: 60px;
+}
+.pre {
+    float: left;
+    margin-top: 20px;
+    margin-left: 20px;
+    margin-bottom: 10px;
+}
+
+
+/*CSS for Banker.html*/
+
+.mainbody {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    background-color: rgb(212, 176, 85);
+    width: 90%;
+    border: 5px solid black;
+    border-radius: 25px;
+    padding: 50px;
+    margin: 30px;
+}
+#resourceA, #resourceB, #resourceC {
+    width: 100px;
+}
+#btn {
+    width: 200px;
+    border: 5px black;
+    border-radius: 25px;
+    /* width: 260px; */
+    margin: 20px;
+    height: 35px;
+    font-size: 20px;
+}
+#algorithms-form {
+    display: flex;
+}
+#algo {
+    margin-left: 20px;
+    border-radius: 10px;
+    padding: 10px;
+    width: auto;
+}
+.allocation-table,
+.allocation-table th,
+.allocation-table td {
+    border-collapse: collapse;
+    text-align: center;
+    border: 2px solid black;
+}
+
+.allocation-table td {
+    padding: 0 2px;
+}
+
+.allocation-table,
+.allocation-table tr,
+.allocation-table td,
+.allocation-table th {
+    border: 2px solid brown;
+    background-color: transparent;
+}
+
+.allocation-table {
+    border: 2px;
+}
+
+.allocation-table input {
+    text-align: center;
+    border: none;
+    width: 100px;
+    background-color: transparent;
+}
+
+.allocation-table {
+    margin: 30px;
+}
+.process-btn {
+    height: 5px;
+}
+.process-btn button {
+    height: 20px;
+    width: 20px;
+    font-size: 16px;
+    background-color: transparent;
+    border: none;
+    font-weight: bolder;
+}
+.buttons1{
+    text-align: center;
+}
+.instances{
+    text-align: left;
+}
+
+/*CSS for fcfs*/
+.fcfs_content,.file_matter{
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(212, 176, 85);
+    width: 90%;
+    border: 5px solid black;
+    border-radius: 25px;
+    padding: 50px;
+    padding-right: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
+    0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    margin: 30px;
+}
+.user_input{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.advDis{
+    display: flex;
+    text-align: left;
+    gap: 50px;
+    margin: 20px;
+    padding: 10px;
+}
+.advDis>ul{
+    border-collapse: collapse;
+}
+.input_output{
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+}
+#text1,#text2{
+    padding: 7px;
+    border: 1px black solid;
+    border-radius: 10px;
+    width: 250px;
+}
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin: 20px;
+    margin-bottom: 10px;
+}
+#t2{
+    margin-top: 20px;
+}
+.button{
+    margin-top: 20px;
+}
+.Sbutton{
+    text-align: center;
+    padding: 10px;
+    margin-top: 20px;
+}
+.chartContainer{
+    margin: 0 auto;
+    margin-top: 40px;
+    width: 900px;
+    height: 1000px;
+    /* font-size: 1em; */
+    overflow: scroll;
+}
+#chartContainer{
+    float: left;
+}
+/* CSS for scan_1.html */
+.request_table{
+    left: 10px;
+    #mytable{
+        margin-left: -30px;
+    }
+}
+#explanationContainer{
+    display: flex;
+    flex-wrap: wrap;
+    text-align: left;
+    /* align-items: left; */
+    font-size: .9rem;
+    h2{
+        text-align: center;
+        font-size: 1.4rem;
+    }
+}
+
+/*CSS for wait_wound_die.html*/
+
+.generate{
+    display: flex;
+    justify-content:space-between;
+}
+#processesTable{
+    width: 80%;
+}
+#processesTableBody>input{
+    height: 100px;
+}
+.process,.waitingResource,#numProcesses,#numResources{
+    text-align: center;
+    height: 30px;
+    font-family: "Sofia", sans-serif;
+    width: 250px;
+}
+#numProcesses,#numResources{
+    border: 1px solid black;
+    border-radius: 10px;
+}
+.buttons{
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+}
+#result {
+    margin-top: 20px;
+    font-weight: bold;
+    color: green;
+    text-align: center;
+}
+
+#graphContainer {
+    text-align: left;
+    margin-top: 20px;
+}
+
+#graph {
+    font-weight: normal;
+    color: black;
+    font-size: 14px;
+    white-space: pre-wrap;
+     /* Hide the graph by default */
+}
+
+/* CSS for process.html */
+
+.sub-heading{
+    font-family:'PT Serif', serif;
+    width:400px;
+    min-height: 45px;
+    color:rgb(212, 176, 85);
+    background-color: rgb(20, 17, 17);
+    margin-left: 5px;
+    text-align: center;
+    padding: 5px;
+    border-radius: 50px;
+    border: 3px solid blueviolet;
+}
+.matter, .gann{
+    background-color: rgb(247, 247, 195);
+    border: 5px solid black;
+    border-radius: 25px;
+    font-family: 'PT Serif', serif;
+    height: auto;
+    width: 75%;
+    margin-left: 100px;
+    padding: 30px;
+}
+img{
+    text-align: center;
+    margin-left: 50px;
+    width: 350px;
+    height: 300px;
+}
+.NextPre{
+    display: flex;
+    justify-content: space-between;
+    margin: 50px;
+}
+.pre1{
+    margin: 20px;
+    /* font-style:var(#000,#ccc); */
+}
+
+.Chead{
+    font-size: 22px;
+}
+.pre-matter-border,.pre-matter-border1{
+    font-family: 'Courier New', Courier, monospace;
+    padding: 20px;
+    border: 1px solid black;
+    border-radius: 10px;
+}
+.pre-matter-border{
+    width: 95%;
+}
+.pre-matter-border1{
+    width: 30px;
+}
+.pre-matter{
+    font-family: 'Courier New', Courier, monospace;
+    padding: 20px;
+}
+.pre-matter-fcfs{
+    font-family: 'Courier New', Courier, monospace;
+    padding: 0;
+    /* margin: 10px; */
+    margin-top: 50px;
+}
+formula{
+    border: 1px solid black;
+    border-radius: 20px;
+    background-color: #ccc;
+    padding: 8px;
+    margin: 20px;
+}
+
+/* CSS for os.html */
+
+.content2{
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    background-color: rgb(212, 176, 85);
+    border: solid black;
+    border-radius: 20px;
+    padding: 30px;
+    margin: 20px;
+    width: 100%;
+}
+
+.userinput{
+    /* display: grid;
+    grid-template-rows: 1fr 1fr; */
+    display: flex;
+    flex-direction: column;
+}
+
+.inputfields{
+    display: flex;
+    margin-top: 30px;
+}
+
+.fit_calc{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-top: 50px;
+}
+.resultant-table{
+    /* float: left; */
+    /* margin-left: 0; */
+    justify-self: start;
+    /* background-color: aquamarine; */
+}
+#tblResults{
+    margin: 50px 0 10px 0;
+}
+.os_input{
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid black;
+}
+
+/* CSS for file.html */
+.file_matter{
+    font-family:'PT Serif', serif;
+    line-height: 30px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.list_item{
+    margin-left: 30px;
+}
+/* CSS for pageFault.html */
+.container1 {
+    display: flex;
+    text-align: left;
+}
+.one{
+    font-family: 'PT Serif', serif;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 70%;
+    line-height: 30px;
+}
+.fault-input{
+    display: flex;
+    flex-direction: column;
+}
+#page-reference,#page-frames {
+    width: 100%;
+    min-width: 0; /* Reset the default min-width */
+    max-width: 300px;
+    box-sizing: border-box;
+}
+.result-table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.result-table th, .result-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+}
+
+.result-table th {
+    background-color: #f2f2f2;
+}
+
+.result-table td:first-child {
+    text-align: left;
+}
+
+.result-table td.hit {
+    background-color: #b3e0ff;
+}
+
+.result-table td.miss {
+    background-color: #ff9999;
+}
+
+/* Media query for screens smaller than 768px (adjust as needed) */
+@media screen and (max-width: 768px) {
+    .main, body {
+        /* background: linear-gradient(to top, rgba(0,0,0,0.5)20%, rgba(0,0,0,0.5)20%), url(os.jpg);
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat; */
+        font-size: 16px; 
+        /* background-size: 100% 100%; */
+        /* height: 100%; */
+    }
+
+    .icon, .search {
+        width: 100%;
+        text-align: center; 
+        margin: 10px 0; 
+    }
+
+    /* Hide the menu on small screens */
+    .menu {
+        display: none; 
+    }
+    .search{
+        margin-left: 20px;
+        /* float: right; */
+    }
+    .box {
+        margin: 20px 0 20px 40px; 
+        width: 90%; 
+    }
+    .content{
+        /* grid-template-columns: 1fr 1fr; */
+        margin-top: 80px;
+        /* display: flex; */
+        
+    }
+    .left{
+        text-align: center;
+    }
+    .right{
+        text-align: center;
+    }
+    .scheduleHeading{
+        margin: 0 auto;
+    }
+    .btn1,.btn2,.btn3,.btn4,.btn5,.btn6{
+        height: 80px;
+    }
+
+    /* CSS for linex.html */
+
+    .commands{
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .box2{
+        margin-left: auto;
+        width: auto;
+        height: auto;
+    }
+    .commands-parent{
+        width: 100%;
+        text-align: center;
+        margin-left: 35px;
+    }
+
+    /*CSS fro cpuScheduling.html*/
+    .content1{
+        margin: 10px;
+    }
+    table{
+        margin: 0;
+    }
+    #algorithms-form{
+        flex-direction: column;
+    }
+    button{
+        width: 160px;
+    }
+    .table-container {
+        overflow-x: auto;
+        max-width: 100%; 
+    }
+  
+    .final-table {
+        width: 100%;
+        white-space: nowrap; 
+    }
+  
+    .final-table th,
+    .final-table td {
+        padding: 8px;
+    }
+
+    /* CSS for algorithems.html */
+    /* .npps{
+        width: 700px;
+        height: 300px;
+    } */
+    /*CSS for Banker.html*/
+    .input{
+        display: flex;
+    }
+    .left1{
+        grid-template-columns: 1fr;
+    }
+
+    /*CSS for fcfs*/
+    .fcfs_content{
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        width: 80%;
+        margin: 2px;
+        overflow: scroll;
+        padding-bottom: 20px;
+    }
+    .advDis{
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        gap: 20px;
+        margin: 20px;
+        padding: 10px;
+    }
+    .input_output{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .chartContainer {
+        width: calc(100% - 10px); /*20px gap on top and 20px gap on the bottom */
+        position: absolute; /* Position the child absolutely */
+        top: 100%; /* Position the child below the parent's contents */
+        left: 0;
+        margin: 10px; 
+        /* width: 100%; */
+        margin-bottom: 50px; /* Add a 20px gap on the bottom */
+    }
+    #chartContainer{
+        width: 200px;
+    }
+    
+    /*CSS FOR wait_wound_die.html*/
+    .generate{
+        gap: 30px;
+        margin-bottom: 20px;
+    }
+    .generate,.buttons{
+        flex-direction: column;
+    }
+    .buttons{
+        justify-content: center
+    }
+    #processesTable{
+        margin: 0 0 20px;
+        width: fit-content;
+        /* overflow: scroll; */
+    }
+    .generateTableButton,.buttons{
+        text-align: center;
+    }
+
+    /* CSS for process.html */
+    .sub-heading {
+        width: 100%;
+        height: auto;
+        margin-left: 0;
+    }
+
+    .matter,
+    .gann {
+        width: 100%;
+        margin-left: 0;
+    }
+    .matter{
+        margin: 0 auto;
+    }
+
+    img {
+        margin-left: 0;
+        width: 100%;
+        height: auto;
+    }
+
+    .NextPre {
+        gap: 80px;
+        align-items: center;
+        margin: 20px;
+    }
+    .nxt{
+        margin-right: 0;
+    }
+    .Chead{
+        text-align: center;
+        font-size: 15px;
+    }
+    formula{
+        font-size: 11px;
+    }
+    /* CSS  for Banker.html */
+    .mainbody{
+        grid-template-columns: 1fr;
+        margin: 0;
+    }
+    /* CSS for os.html */
+
+    .content2{
+        grid-template-columns: 1fr;
+        /* margin-left: 90px; */
+        margin: 0;
+    }
+    .inputfields{
+        flex-direction: column;
+        text-align: center;
+        margin: 0;
+    }
+    .fit_calc{
+        text-align: center;
+        justify-content: space-around;
+        gap: 10px;
+    }
+    .fit_calc>button{
+        /* width: auto; */
+        width: 150px;
+        font-size: 15px;
+    }
+    /* button{
+        width: 260px;
+        min-height: 35px;
+        font-size: 20px;
+    } */
+    .os_content{
+        display: flex;
+        flex-direction: column;
+        /* align-items: center; */
+        text-align: center;
+    }
+    .resultant-table{
+        margin-top: 50px;
+    }
+
+    /* CSS for file.html */
+    .file_matter{
+        margin: 10px;
+    }
+
+    .pre-matter-border{
+        padding: 10px;
+    }
+
+    .pre-matter-border1{
+        width: 300px;
+    }
+    /* CSS for pageFault.html */
+    .one{
+        grid-template-columns: 1fr;
+    }
+    .faultFindBtn{
+        margin: 10px auto 0 auto;
+    }
+}

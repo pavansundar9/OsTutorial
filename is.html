@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Is Command in Linex</title>
+    <link rel="stylesheet" href="task1_2.css">
+    <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia&effect=neon|outline|emboss|shadow-multiple"> -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=PT+Serif:ital@1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <br><br>
+    <div class="Iscommand">
+        <br>
+    <h3>is command:</h3> <br>
+    <p>
+     The <b>is</b> command is used to view the contents of a directory. By 
+     default, this command will display the contents of your current 
+     working directory. If you want to see the content of other 
+     directories,type is and then the directory's path.<br></p>
+     <p><h4>The basic syntax of chmod command is as follows:</h4><br><div class="syntax"><p>is</p></div></p><br>
+    <ul class="list">
+        <li class="list"><div><b>is -R</b></div><div>:will list all the files in the sub-directories as well</div></li><br>
+        <li class="list"><div><b>is-a</b></div><div>:will show the hidden files</div></li><br>
+        <li class="list"><div><b>is -t</b></div><div>:It sorts the file by modification time, showing the last edited file first. head -1 picks up this first file.To open the last edited file in the current 
+            directory use the combination of is and head commands as shown below.</div></li><br>
+        <li class="list"><div><b>is -1</b></div><div>:It is used to display one file per line.</div></li><br> 
+        <li class="list"><div><b>is-l</b></div><div>:displays all the information about Files/Directories</div></li><br>
+        <li class="list"><div><b>is-lh</b></div><div>: display file size in easy to read format. i.e i.e M for MB, K for KB, G for GB</div></li><br>
+        <li class="list"><div><b>is -ld</b></div><div>:When you use “is -l” you will get the details of directories content. But if you want the details of the directory then you can use -d option as., For example, 
+            if you use is -l /etc will display all the files under the etc directory. But, if you want to 
+            display the information about the /etc/ directory, use -ld option as shown below.</div></li><br>
+        <li class="list"><div><b>is -al</b></div><div>:will list the files and directories with detailed information like the permissions, size, owner, etc.</div></li><br>
+        
+    </ul>
+    <br>
+</div>
+<div>
+    <button id="back" class="back" onclick="back()"><i class="fa fa-angle-left" style="font-size:18px"></i>&nbsp;Back</button>
+</div>
+</div>
+<script>
+    document.getElementById("back").onclick =function(){
+            location.href="linex.html";
+    }
+</script>
+<br>
+</body>
+</html>

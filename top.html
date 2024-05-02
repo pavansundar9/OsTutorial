@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>top Command in Linex</title>
+    <link rel="stylesheet" href="task1_2.css">
+    <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia&effect=neon|outline|emboss|shadow-multiple"> -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=PT+Serif:ital@1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <br><br>
+    <div class="topcommand">
+        <br>
+    <h3>Top command:</h3> <br>
+    <p>
+        The top (table of processes) command shows a real-time view of running processes in Linux and 
+        displays kernel-managed tasks. The command also provides a system information summary that shows resource 
+        utilization, including CPU and memory usage.<br></p><br>
+        <p><h4>The basic syntax of chmod command is as follows:</h4><br><div class="syntax"><p>top</p></div></p><br>
+    <ul class="list1">
+        <li class="list"><div><b>top</b></div> <div>:Run the top command without any parameter. This will load the default screen of the top.</div></li><br>
+        <li class="list"><div><b>top -v</b><small>(version)</small></div><div>:Shows the library version and usage prompt and then quits the program.</div></li><br>
+        <li class="list"><div><b>top-b</b><small>(batch mode)</small></div><div>:Starts top in batch mode, allowing to send the command's output to a file or other programs. 
+            top doesn't accept input in batch mode and runs until killed or until it reaches the specified iteration limit.</div></li><br>
+        <li class="list"><div><b>top-c</b><small>(Toggle command line/program name)</small></div><div>:Reverses the last remembered c state. If top displayed command lines, that field now shows program names and vice versa.</div></li><br>
+        <li class="list"><div><b>top-h</b><small>(help)</small></div><div> : Shows the command help file.</div></li><br>
+        <li class="list"><div><b>top-d [secs.tenths]</b><small>(Delay time interval)</small></div><div>:Prompts you to specify the delay before 
+            updating the screen, overriding the default value. The value is in seconds.The command accepts fractional seconds but 
+            doesn't accept negative numbers.</div></li><br>
+        <li class="list"><div><b>top-e [k | m | g | t | p]</b><small>(Toggle task memory scaling)</small></div><div>:Allows you to change top task area memory scaling. The available scaling options are k (kibibytes), 
+            m (mebibytes), g (gibibytes), t (tebibytes), p (pebibytes)</div></li><br>
+        <li class="list"><div><b>top-H</b><small>(Threads mode operation)</small></div><div>:Specifying the -H option instructs top to display individual threads instead of a sum of all threads in each process.</div></li><br>
+        <li class="list"><div><b>top-i</b><small>(Idle process toggle)</small></div><div>: Reverses the last remembered i state. When the toggle is OFF, top doesn't display the tasks that haven't used CPU resources since the last update.</div></li><br>
+        <li class="list"><div><b>top-n</b><small>(Limit iteration number)</small></div><div>:Specify the maximum number of iterations you want top to produce before ending.</div></li><br>
+        <li class="list"><div><b>top-o [field name]</b><small>(Overwrite sort field)</small></div><div>:Specify the field name top uses to sort tasks. Prepending a + to the field name forces top to sort high to low while prepending it with - orders tasks low to high. 
+            The -o option primarily supports automated batch mode operation.</div></li><br>
+        <li class="list"><div><b>top-s</b><small>(Secure mode operation)</small></div><div>:Starts top in secure mode, even for root.</div></li><br>
+        <li class="list"><div><b>top-S</b><small>(Cumulative time toggle)</small></div><div>:Reverses the last remembered S state. When the cumulative time toggle is ON, each process is listed with the CPU time it has used.</div></li>
+        <li class="list"><div><b>top-u | -U [ID or name]</b><small>(User filter mode)</small></div><div>:Displays only the processes matching the specified user ID or user name. The -u option matches only the effective user, 
+            while the -U option matches any user - real, effective, saved, or filesystem. Prepending the user ID or user name with an exclamation point (!) causes top to display only the processes that don't 
+            match the one provided.</div></li><br>
+        <li class="list"><div><b>top-w [number]</b><small>(Output width override)</small></div><div>When used without an argument, -w instructs top to format the output using the COLUMNS= and LINES= environment variables, if applicable. 
+            Otherwise, the width is fixed at 512 columns maximum. Appending an argument to -w increases (up to 512) or decreases the output width while the row number is unlimited. 
+            The program never exceeds the actual terminal dimensions at which top was invoked.</div></li><br>
+            <li class="list"><div><b>top-1</b><small>(Single/separate CPU states toggle)</small></div><div>Reverses the last remembered CPU state portion. Depending on the NUMA Node command toggle (2) state, either displays all CPU information in a single line or separately</div></li>
+    </ul>
+    <br>
+</div>
+<div>
+    <button id="back" class="back" onclick="back()"><i class="fa fa-angle-left" style="font-size:18px"></i>&nbsp;Back</button>
+</div>
+</div>
+<script>
+    document.getElementById("back").onclick =function(){
+            location.href="linex.html";
+    }
+</script>
+<br>
+</body>
+</html>

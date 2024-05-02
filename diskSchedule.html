@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Disk Scheduling Algo</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia&effect=neon|outline|emboss|shadow-multiple">
+        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+        <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia&effect=neon|outline|emboss|shadow-multiple">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia&effect=neon|outline|emboss|shadow-multiple">
+    
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
+</head>
+
+<body>
+    <div>
+        <div class="navbar">
+            <div class="nav-container">
+                <div class="icon">
+                    <h2 class="font-effect-outline" style="color: coral;"><a href="index.html">MuRP</a></h2>
+                </div>
+                <div class="menu">
+                    <ul>
+                        <li><a href="index.html">HOME</a></li>
+                        <li><a href="#">ABOUT</a></li>
+                        <li><a href="#">SERVICE</a></li>
+                        <li><a href="#">DESIGN</a></li>
+                        <li><a href="#">CONTACT</a></li>
+                    </ul>
+                </div>
+                <div class="search">
+                    <input class="srch" type="search" name="" placeholder="Type to search">
+                    <a href="#"><input type="button" value="Search"></a>
+                </div>                
+            </div>
+        </div>
+        <div>
+            <div class="box">
+                <h2 class="h2">Disk Scheduling</h2>
+            </div>
+            <div class="content"> 
+                <div class="left">
+                    <button id="fcfs" class="btn1" onclick="fcfs()">First come First Serve</button> <br><br>
+                    <button id="sstf" class="btn2" onclick="sstf()">Shortest Seek Time First</button><br><br>
+                    <button id="look" class="btn3" onclick="look()">Look Scheduling</button> 
+                </div>
+                <div class="right">
+                    <button id="clook" class="btn4" onclick="clook()">C-Look Scheduling</button><br><br>
+                    <button id="scan" class="btn5" onclick="scan()">Scan Scheduling</button><br><br>
+                    <button id="cscan" class="btn6" onclick="c-scan()">C-Scan Scheduling</button>
+                </div>
+                
+            </div>
+        </div>
+        <div>
+            <button id="back" class="back" onclick="back()"><i class="fa fa-angle-left" style="font-size:18px"></i>&nbsp;Back</button>
+        </div>
+    </div>
+        <script type="text/javascript">
+            document.getElementById("fcfs").onclick = function () {
+                location.href = "fcfs_1.html";
+            };
+            document.getElementById("sstf").onclick = function () {
+                location.href = "sstf.html";
+            };
+            document.getElementById("look").onclick = function () {
+                location.href = "look.html";
+            };
+            document.getElementById("clook").onclick = function () {
+                location.href = "c-look.html";
+            };
+            document.getElementById("scan").onclick = function () {
+                location.href = "scan_1.html";
+            };
+            document.getElementById("cscan").onclick = function () {
+                location.href = "c-scan.html";
+            };
+            document.getElementById("back").onclick =function(){
+                location.href="index.html";
+            };
+        </script>
+    </body>
+</html>

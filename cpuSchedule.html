@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CPU SCHEDULING</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia&effect=neon|outline|emboss|shadow-multiple">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.3.2/html2canvas.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.min.js"></script>
+    <script type="text/javascript" src="https://html2canvas.hertzen.com/dist/html2canvas.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/canvas2blob/20171022/canvas2blob.min.js"></script> -->
+</head>
+<body>
+    <div class="main">
+        <div class="navbar">
+            <div class="nav-container">
+                <div class="icon">
+                    <h2 class="font-effect-outline" style="color: coral;"><a href="index.html">MuRP</a></h2>
+                </div>
+                <div class="menu">
+                    <ul>
+                        <li><a href="index.html">HOME</a></li>
+                        <li><a href="#">ABOUT</a></li>
+                        <li><a href="#">SERVICE</a></li>
+                        <li><a href="#">DESIGN</a></li>
+                        <li><a href="#">CONTACT</a></li>
+                    </ul>
+                </div>
+                <div class="search">
+                    <input class="srch" type="search" name="" placeholder="Type to search">
+                    <a href="#"><input type="button" value="Search"></a>
+                </div>                
+            </div>
+        </div>
+        <br><br>
+        <h1 class="scheduleHeading">Scheduling Algorithms Simulator</h1>
+        <br><br>
+        <div class="content1" id="content1">
+            <div class="mainbody1">
+                <div class="preferences">    
+                    <form id="algorithms-form">
+                        <label for="algo"><h3 class="h3">Algorithms : </h3></label>
+                        <select name="algo" id="algo">
+                            <option value="fcfs">First Come First Serve (FCFS)</option>
+                            <option value="sjf">Shortest Job First (SJF)</option>
+                            <option value="srtf">Shortest Remaining Job First (SRTF)</option>
+                            <option value="rr">Round Robin</option>
+                            <option value="pnp">Priority (Non Preemptive)</option>
+                            <option value="pp">Priority (Preemptive)</option>
+                        </select>
+                    </form>
+                    <table class="main-table">
+                        <thead>
+                            <tr>
+                                <th class="process-id">Process ID</th>
+                                <th class="priority hide">Priority</th>
+                                <th class="arrival-time">Arrival Time</th>
+                                <th class="process-time" colspan="1">Process Time</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="process-id" rowspan="2">P1</td>
+                                <td class="priority hide" rowspan="2"><input type="number" min="1" step="1" value="1"></td>
+                                <td class="arrival-time" rowspan="2"><input type="number" min="0" step="1" value="0"> </td>
+                                <td class="process-time cpu process-heading" colspan="">CPU burst time</td>
+                            
+                            </tr>
+                            <tr>
+                                <td class="process-time cpu process-input"><input type="number" min="1" step="1" value="1"> </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="btn">
+                        <button type="button" class="add-btn">Add Process</button>
+                        <button type="button" class="remove-btn">Delete Process</button>
+                    </div>
+                    <div class="priority">
+                        <p> Priority : 1 is</p>
+                        <button id="priority-toggle-btn">
+                            <span id="priority-preference">high</span>
+                            <i class="fa fa-refresh"></i>
+                        </button>
+                    </div>
+                </div>
+                    <!-- Context switch input -->
+                    <div id="context-switch-div">
+                        <br>
+                        <label for="context-switch">Context Switch Time : </label>
+                        <input type="number" name="Context Switch" id="context-switch" min="0" step="1" value="0">
+                    </div>
+                    
+                    <!-- Time quantum input -->
+                    <div id="time-quantum" class="hide">
+                        <br>
+                        <label for="tq">Time Quantum : </label>
+                        <input type="number" name="Time Quantum" id="tq" min="1" step="1" value="1">
+                    </div>
+                    <br>
+    
+                    <!--Buttons-->
+                    <button type="button" id="calculate">Calculate</button>
+                    <button type="button" id="reset" onClick="window.location.reload();">Reset</button>
+                    <!-- <button type="button" id="savePNG" onclick="savePNG()">Save PNG</button> -->
+                    <button type="button" id="savePDF" onclick="savePDF()">Save PDF</button>
+
+                    <!-- Output -->
+                    <div id="output">
+                    
+                    </div>
+                
+            </div>
+            </div>
+            <div class="NextPre">
+                <button id="pre" class="pre" onclick="pre()"></a><i class="fa fa-angle-left" style="font-size:18px"></i>&nbsp;Previous</button>
+            </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js" integrity="sha512-d9xgZrVZpmmQlfonhQUvTR7lMPtO7NkZMkA0ABN3PHCbKA5nqylQ/yWlFAyY6hYgdF1Qh6nYiuADWwKB4C2WSw==" crossorigin="anonymous"></script>
+<script src="script.js"></script>
+<script type="text/javascript">
+    document.getElementById("pre").onclick = function () {
+        location.href = "process_e.html";
+    };
+    function savePNG() {
+        captureDiv('content1');
+    // const element = document.querySelector('.content1');
+    // const images = element.querySelectorAll('img');
+
+    // // Check if there are images to load
+    // if (images.length > 0) {
+    //     let imagesLoaded = 0;
+
+    //     // Function to check if all images are loaded
+    //     const checkImagesLoaded = () => {
+    //         imagesLoaded++;
+
+    //         if (imagesLoaded === images.length) {
+    //             // All images are loaded, proceed to capture the canvas
+    //             captureCanvas();
+    //         }
+    //     };
+
+    //     // Attach the checkImagesLoaded function to the onload event of each image
+    //     images.forEach(image => {
+    //         image.onload = checkImagesLoaded;
+    //     });
+    // } else {
+    //     // No images to load, directly capture the canvas
+    //     captureCanvas();
+    // }
+
+}
+
+function captureCanvas() {
+    const element = document.querySelector('.content1');
+
+    // Use html2canvas to capture the content of the div as a canvas
+    html2canvas(element, { width: element.scrollWidth, height: element.scrollHeight }).then(canvas => {
+        const dataURL = canvas.toDataURL('image/png');
+        const link = document.createElement('a');
+        link.href = dataURL;
+        link.download = 'myDiv.png';
+        link.click();
+    });
+}
+function captureDiv(divId) {
+ setTimeout(function() {
+    var div = document.getElementById(divId);
+
+    html2canvas(div).then(function(canvas) {
+      var imageUrl = canvas.toDataURL('image/png');
+
+      // create a download link and click on it to save the image
+      var downloadLink = document.createElement('a');
+      downloadLink.href = imageUrl;
+      downloadLink.download = 'div-image.png';
+      document.body.appendChild(downloadLink);
+      downloadLink.click();
+      document.body.removeChild(downloadLink);
+    });
+ }, 500); // 500 milliseconds delay
+}
+
+
+function savePDF(){
+    // // Create a new jsPDF object
+    // var doc = new jsPDF();
+
+    // // Get the HTML content of the div you want to save as a PDF
+    // var divContent = document.getElementById('content1').innerHTML;
+
+    // // Use the fromHTML() method of the jsPDF object to convert the HTML content to a PDF
+    // doc.fromHTML(divContent);
+
+    // // Use the save() method of the jsPDF object to save the PDF file
+    // doc.save('myDiv.pdf');
+    printDiv('content1','content');
+}
+var doc = new jsPDF();
+
+function saveDiv(divId, title) {
+ doc.fromHTML(`<html><head><title>${title}</title></head><body>` + document.getElementById(divId).innerHTML + `</body></html>`);
+ doc.save('div.pdf');
+}
+
+function printDiv(divId,title) {
+
+  let mywindow = window.open('', 'PRINT', 'height=650,width=900,top=100,left=150');
+
+  // Get the input values and update the HTML content
+  let inputElements = document.getElementById(divId).querySelectorAll('input, textarea');
+  inputElements.forEach((input) => {
+    input.setAttribute('value', input.value);
+  });
+
+  mywindow.document.write(`<html><head><title>${title}</title>`);
+  mywindow.document.write('</head><body >');
+  mywindow.document.write(document.getElementById(divId).innerHTML);
+  mywindow.document.write('</body></html>');
+
+  mywindow.document.close(); // necessary for IE >= 10
+  mywindow.focus(); // necessary for IE >= 10*/
+
+  mywindow.print();
+  mywindow.close();
+
+  return true;
+}
+
+
+</script>
+</body>
+</html>

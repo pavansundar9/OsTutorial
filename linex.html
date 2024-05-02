@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basic commands of linex</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=PT+Serif:ital@1&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia&effect=neon|outline|emboss|shadow-multiple">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <div class="main">
+        <div class="navbar">
+            <div class="nav-container">
+                <div class="icon">
+                    <h2 class="font-effect-outline" style="color: coral;"><a href="index.html">MuRP</a></h2>
+                </div>
+                <div class="menu">
+                    <ul>
+                        <li><a href="index.html">HOME</a></li>
+                        <li><a href="#">ABOUT</a></li>
+                        <li><a href="#">SERVICE</a></li>
+                        <li><a href="#">DESIGN</a></li>
+                        <li><a href="#">CONTACT</a></li>
+                    </ul>
+                </div>
+                <div class="search">
+                    <input class="srch" type="search" name="" placeholder="Type to search">
+                    <a href="#"><input type="button" value="Search"></a>
+                </div>                
+            </div>
+        </div>
+    </div>
+    <div class="commands-parent">
+        <div class="box2">
+            <h2 class="head">Basic Commands of Linux <i class="fa fa-linux" style="font-size:24px"></i></h2>
+        </div>
+
+        <br><br>
+        <div class="commands">
+            <div><button id="is" class="is linex_btn" onlick="is()">ls</button></div>
+            <div><button id="top" class="top linex_btn" onlick="topm()">Top</button></div>
+            <div><button id="mkdir" class="mkdir linex_btn" onlick="mkdir()">mkdir</button></div>
+            <div><button id="rm" class="rm linex_btn" onlick="rm()">rm</button></div>
+            <div><button id="rmdir" class="rmdir linex_btn" onlick="rmdir()">rmdir</button></div>
+            <div><button id="chmod" class="chmod linex_btn" onlick="chmod()">chmod</button></div>
+            <div><button id="cp" class="cp linex_btn" onlick="cp()">cp</button></div>
+            <div><button id="cd" class="cd linex_btn" onlick="cd()">cd</button></div>
+            <div><button id="pwd" class="pwd linex_btn" onlick="pwd()">pwd</button></div>
+            <div><button id="cat" class="cat linex_btn" onlick="cat()">cat</button></div>
+            <div><button id="mv" class="mv linex_btn" onlick="mv()">mv</button></div>
+            <div><button id="find" class="find linex_btn" onlick="find()">find</button></div>
+            <div><button id="du" class="du linex_btn" onlick="du()">du</button></div>
+            <div><button id="kill" class="kill linex_btn" onlick="kill()">kill</button></div>
+            <div><button id="chown" class="chown linex_btn" onlick="chown()">chown</button></div>
+            <div><button id="tar" class="tar linex_btn" onlick="tar()">tar</button></div>
+            <div><button id="sudo" class="sudo linex_btn" onlick="sudo()">sudo</button></div>
+        </div>
+    </div>
+    <div>
+        <button id="back" class="back" onclick="back()"><i class="fa fa-angle-left" style="font-size:18px"></i>&nbsp;Back</button>
+    </div>
+    <script type="text/javascript">
+        document.getElementById("is").onclick = function () {
+            location.href = "is.html";
+        };
+        document.getElementById("top").onclick = function () {
+            location.href = "top.html";
+        };
+        document.getElementById("mkdir").onclick = function () {
+            location.href = "mkdir.html";
+        };
+        document.getElementById("rm").onclick = function () {
+            location.href = "rm.html";
+        };
+        document.getElementById("rmdir").onclick = function () {
+            location.href = "rmdir.html";
+        };
+        document.getElementById("chmod").onclick = function () {
+            location.href = "chmod.html";
+        };
+        document.getElementById("cp").onclick = function () {
+            location.href = "cp.html";
+        };
+        document.getElementById("cd").onclick = function () {
+            location.href = "cd.html";
+        };
+        document.getElementById("pwd").onclick = function () {
+            location.href = "pwd.html";
+        };
+        document.getElementById("cat").onclick = function () {
+            location.href = "cat.html";
+        };
+        document.getElementById("mv").onclick = function () {
+            location.href = "mv.html";
+        };
+        document.getElementById("find").onclick = function () {
+            location.href = "find.html";
+        };
+        document.getElementById("du").onclick = function () {
+            location.href = "du.html";
+        };
+        document.getElementById("kill").onclick = function () {
+            location.href = "kill.html";
+        };
+        document.getElementById("chown").onclick = function () {
+            location.href = "chown.html";
+        };
+        document.getElementById("tar").onclick = function () {
+            location.href = "tar.html";
+        };
+        document.getElementById("sudo").onclick = function () {
+            location.href = "sudo.html";
+        };
+        document.getElementById("back").onclick =function(){
+            location.href="index.html";
+        }
+    </script>
+</body>
+</html>

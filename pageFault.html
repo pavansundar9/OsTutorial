@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page Fault Calculator</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia&effect=neon|outline|emboss|shadow-multiple">
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.3.2/html2canvas.min.js"></script>
+    
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.min.js"></script>
+    <script type="text/javascript" src="https://html2canvas.hertzen.com/dist/html2canvas.js"></script>
+    
+</head>
+<body >
+    <div class="main">
+        <div class="navbar">
+            <div class="nav-container">
+                <div class="icon">
+                    <h2 class="font-effect-outline" style="color: coral;"><a href="index.html">MuRP</a></h2>
+                </div>
+                <div class="menu">
+                    <ul>
+                        <li><a href="index.html">HOME</a></li>
+                        <li><a href="#">ABOUT</a></li>
+                        <li><a href="#">SERVICE</a></li>
+                        <li><a href="#">DESIGN</a></li>
+                        <li><a href="#">CONTACT</a></li>
+                    </ul>
+                </div>
+                <div class="search">
+                    <input class="srch" type="search" name="" placeholder="Type to search">
+                    <a href="#"><input type="button" value="Search"></a>
+                </div>                
+            </div>
+        </div>
+    </div>
+    <div>
+        <h2 class="sub-heading"><u>Page Fault Calculator</u></h2>
+        <div class="mainbody one" id="one">
+            <div class="fault-input">
+                <label for="page-reference">Page Reference String:</label>
+                <input type="text" id="page-reference" placeholder="Enter page reference string (e.g., 7, 0, 1, 2)">
+                <br>
+                <label for="page-frames">Number of Page Frames:</label>
+                <input type="number" id="page-frames" min="1" placeholder="Enter the number of page frames">
+                <br>
+                <button class="faultFindBtn" onclick="calculatePageFault()">Calculate Page Fault</button>    
+                <!-- <button class="saveButton">Save as PNG</button> -->
+                <button type="button" id="savePDF" onclick="savePDF()">Save PDF</button>
+            </div>
+            <div id="result">
+                
+            </div>
+        </div>
+    </div>
+    
+    <script type="text/javascript">
+        function calculatePageFault() {
+            // Get user inputs
+            const pageReferenceInput = document.getElementById('page-reference');
+            const pageFramesInput = document.getElementById('page-frames');
+            const resultDiv = document.getElementById('result');
+
+            // Parse user inputs
+            const pageReferenceString = pageReferenceInput.value;
+            const pageFrames = parseInt(pageFramesInput.value);
+
+            // Check if inputs are valid
+            if (!pageReferenceString || isNaN(pageFrames) || pageFrames < 1) {
+                resultDiv.innerHTML = '<p class="error">Invalid inputs. Please enter a valid page reference string and number of page frames.</p>';
+                return;
+            }
+
+            // Split the page reference string into an array of integers
+            const pageReference = pageReferenceString.split(',').map(Number);
+
+            // Calculate page faults using the FIFO page replacement algorithm
+            const { pageFaults, resultTable } = calculateFIFOPageFaults(pageReference, pageFrames);
+
+            // Display the result
+            resultDiv.innerHTML = `
+                <p>Total page faults: ${pageFaults}</p>
+                <table class="result-table">
+                    <thead>
+                        <tr>
+                            <th>Iteration</th>
+                            <th>Page Reference</th>
+                            <th>Page in Cache?</th>
+                            <th>Action</th>
+                            <th>Page Cache</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        ${resultTable}
+                    </tbody>
+                </table>
+            `;
+        }
+
+        function calculateFIFOPageFaults(pageReference, pageFrames) {
+            let pageCache = [];
+            let pageFaults = 0;
+            let resultTable = '';
+
+            for (let i = 0; i < pageReference.length; i++) {
+                const page = pageReference[i];
+
+                // Check if the page is in the cache
+                const isInCache = pageCache.includes(page);
+
+                // Update result table
+                resultTable += `
+                    <tr>
+                        <td>${i + 1}</td>
+                        <td>${page}</td>
+                        <td>${isInCache ? 'Yes' : 'No'}</td>
+                        <td class="${isInCache ? 'hit' : 'miss'}">${isInCache ? 'Hit' : 'Miss'}</td>
+                        <td>${pageCache.join(', ')}</td>
+                    </tr>
+                `;
+
+                if (!isInCache) {
+                    // Page fault: Page is not in the cache
+                    pageFaults++;
+
+                    if (pageCache.length >= pageFrames) {
+                        // Remove the oldest page if the cache is full
+                        pageCache.shift();
+                    }
+
+                    // Add the new page to the cache
+                    pageCache.push(page);
+                }
+            }
+
+            return { pageFaults, resultTable };
+        }
+        function getScreen() {
+            // var caption = $('#caption-input').val();
+            // $("#caption-text").html(caption);
+            // $("#panel").hide();
+            html2canvas(document.body, {
+                dpi: 192,
+                onrendered: function( canvas) {
+                    $("#blank").attr('href', canvas.toDataURL("image/png"));
+                    $("#blank").attr('download image.png');
+                }
+            });
+        }
+        var doc = new jsPDF();
+
+        function saveDiv(divId, title) {
+        doc.fromHTML(`<html><head><title>${title}</title></head><body>` + document.getElementById(divId).innerHTML + `</body></html>`);
+        doc.save('div.pdf');
+        }
+
+        function printDiv(divId,title) {
+
+            let mywindow = window.open('', 'PRINT', 'height=650,width=900,top=100,left=150');
+
+            // Get the input values and update the HTML content
+            let inputElements = document.getElementById(divId).querySelectorAll('input, textarea');
+            inputElements.forEach((input) => {
+                input.setAttribute('value', input.value);
+            });
+
+            mywindow.document.write(`<html><head><title>${title}</title>`);
+            mywindow.document.write('</head><body >');
+            mywindow.document.write(document.getElementById(divId).innerHTML);
+            mywindow.document.write('</body></html>');
+
+            mywindow.document.close(); // necessary for IE >= 10
+            mywindow.focus(); // necessary for IE >= 10*/
+
+            mywindow.print();
+            mywindow.close();
+
+            return true;
+        }
+
+        function savePDF(){
+            printDiv('one','pageFault');
+        }
+    </script>
+   
+</body>
+</html>

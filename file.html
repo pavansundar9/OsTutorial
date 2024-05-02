@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File Management in Operating Systems</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia&effect=neon|outline|emboss|shadow-multiple">
+
+    <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&family=Josefin+Sans:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <!-- <style>
+        body {
+            font-family: 'Indie Flower', cursive;
+            font-family: 'Josefin Sans', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+        }
+
+        main {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        p {
+            color: #555;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        section {
+            margin-bottom: 20px;
+        }
+
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+        }
+        .center{
+           display: flex;
+           flex-direction: column;
+           /* text-align: center; */
+           justify-content: center;
+           justify-items: center;
+            /* text-align: center; */
+        }
+    </style> -->
+</head>
+
+<body>
+    <div class="main">
+        <div class="navbar">
+            <div class="nav-container">
+                <div class="icon">
+                    <h2 class="font-effect-outline" style="color: coral;"><a href="index.html">MuRP</a></h2>
+                </div>
+                <div class="menu">
+                    <ul>
+                        <li><a href="index.html">HOME</a></li>
+                        <li><a href="#">ABOUT</a></li>
+                        <li><a href="#">SERVICE</a></li>
+                        <li><a href="#">DESIGN</a></li>
+                        <li><a href="#">CONTACT</a></li>
+                    </ul>
+                </div>
+                <div class="search">
+                    <input class="srch" type="search" name="" placeholder="Type to search">
+                    <a href="#"><input type="button" value="Search"></a>
+                </div>                
+            </div>
+        </div>
+        <div class="box">
+            <h2 class="h2">File Management in Operating Systems</h2>
+        </div>
+        <div class="file_matter">
+            <main>
+                <section>
+                    <h2>Introduction</h2><br>
+                    <p>File management is a crucial aspect of operating systems (OS) that involves the creation, organization, storage, retrieval, and manipulation of data. It plays a fundamental role in ensuring efficient and organized data handling within a computer system.</p>
+                </section><br>
+        
+                <section>
+                    <h2>Advantages of File Management in OS</h2><br>
+                    <ul>
+                        <li class="list_item"><strong>Organization:</strong> File management facilitates the organized storage of data, making it easier to locate and retrieve information when needed.</li>
+                        <li class="list_item"><strong>Data Integrity:</strong> It helps maintain data integrity by providing mechanisms for controlled access, ensuring that data is not unintentionally modified or deleted.</li>
+                        <li class="list_item"><strong>Resource Utilization:</strong> Efficient file management optimizes the utilization of storage resources, preventing unnecessary duplication and wastage of space.</li>
+                        <li class="list_item"><strong>Security:</strong> File management systems implement access control mechanisms, protecting sensitive data from unauthorized access and ensuring data security.</li>
+                    </ul>
+                </section>
+                <br>
+                <section>
+                    <h2>Limitations</h2><br>
+                    <ul>
+                        <li class="list_item"><strong>Complexity:</strong> As the volume of data increases, file management systems can become complex, requiring careful organization and maintenance.</li>
+                        <li class="list_item"><strong>Overhead:</strong> File management systems introduce some overhead in terms of system resources and processing time, particularly when dealing with large-scale data.</li>
+                        <li class="list_item"><strong>Dependency:</strong> Users and applications are often dependent on the file management system, and any issues with it can impact the overall functionality of the system.</li>
+                    </ul>
+                </section>
+                <br>
+                <section>
+                    <h2>Types of File Management in Operating System</h2><br>
+                    <ol>
+                        <li>
+                            <h3>Single-Level Directory System</h3>
+                            <ul>
+                                <li class="list_item">Simplest form where all files are stored in a single directory.</li>
+                                <li class="list_item">Limited scalability and organization.</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <h3>Two-Level Directory System</h3>
+                            <ul>
+                                <li class="list_item">Introduces a hierarchy with a master directory and user directories.</li>
+                                <li class="list_item">Enhances organization and allows for better management of user files.</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <h3>Tree-Structured Directory System</h3>
+                            <ul>
+                                <li class="list_item">Extends the hierarchy with a tree-like structure of directories.</li>
+                                <li class="list_item">Provides a more scalable and organized approach to file management.</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <h3>Acyclic-Graph Directory System</h3>
+                            <ul>
+                                <li class="list_item">Allows directories to have multiple parents, creating a directed acyclic graph.</li>
+                                <li class="list_item">Enhances flexibility in organizing files and directories.</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <h3>Allocation Methods</h3>
+                            <ul>
+                                <li class="list_item"><strong>Contiguous Allocation:</strong> Allocates a contiguous block of disk space to a file.</li>
+                                <li class="list_item"><strong>Linked Allocation:</strong> Allocates space dynamically, using pointers to link file blocks.</li>
+                                <li class="list_item"><strong>Indexed Allocation:</strong> Uses an index to store addresses of file blocks.</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <h3>File Access Methods</h3>
+                            <ul>
+                                <li class="list_item"><strong>Sequential Access:</strong> Reads or writes data sequentially, one record at a time.</li>
+                                <li class="list_item"><strong>Random Access:</strong> Allows direct access to any record in the file, regardless of its position.</li>
+                            </ul>
+                        </li>
+                    </ol>
+                </section>
+            </main>    
+        </div>
+    </div>
+    <!-- <footer>
+        <p>&copy; 2023 OS Tutorial. All rights reserved.</p>
+    </footer> -->
+</body>
+
+</html>
