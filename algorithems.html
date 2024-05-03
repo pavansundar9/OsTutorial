@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Process Management</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=PT+Serif:ital@1&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia&effect=neon|outline|emboss|shadow-multiple">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <div class="main">
+        <div class="navbar">
+            <div class="nav-container">
+                <div class="icon">
+                    <h2 class="font-effect-outline" style="color: coral;"><a href="index.html">MuRP</a></h2>
+                </div>
+                <div class="menu">
+                    <ul>
+                        <li><a href="index.html">HOME</a></li>
+                        <li><a href="#">ABOUT</a></li>
+                        <li><a href="#">SERVICE</a></li>
+                        <li><a href="#">DESIGN</a></li>
+                        <li><a href="#">CONTACT</a></li>
+                    </ul>
+                </div>
+                <div class="search">
+                    <input class="srch" type="search" name="" placeholder="Type to search">
+                    <a href="#"><input type="button" value="Search"></a>
+                </div>                
+            </div>
+        </div>
+    </div>
+        <h2 class="sub-heading"><u>Scheduling Algorithms</u>:</h2><br>
+        <div class="matter">
+            <p class="pre-matter-border "> 
+                Scheduling of processes/work is done to finish the work on time.Below are different time with respect to a process.<br><br>
+                <b>Arrival Time:</b> Time at which the process arrives in the ready queue.<br>
+                <b>Completion Time:</b> Time at which process completes its execution.<br>
+                <b>Burst Time:</b> Time required by a process for CPU execution.<br>
+                <b>Turn Around Time:</b> Time Difference between completion time and arrival time.<br><br>
+                                <formula>Turn Around Time = Completion Time - Arrival Time</formula><br><br>
+                <b>Waiting Time(W.T):</b> Time Difference between turn around time and burst time.<br><br>
+                            <formula>Waiting Time = Turn Around Time - Burst Time</formula><br>
+            </p>
+            <p>
+                <h4><u>The Purpose of a Scheduling algorithm</u></h4>
+                <ol>
+                    <li>Maximum CPU utilization</li>
+                    <li>Fare allocation of CPU</li>
+                    <li>Maximum throughput</li>
+                    <li>Minimum turnaround time</li>
+                    <li>Minimum waiting time</li>
+                    <li>Minimum response time</li>
+                </ol>
+            </p>
+            
+            <h4>There are six popular process scheduling algorithms</h4>
+            <ul>
+                <li>First-Come, First-Served (FCFS) Scheduling</li>
+                <li>Shortest-Job-Next (SJN) Scheduling</li>
+                <li>Priority Scheduling</li>
+                <li>Shortest Remaining Time</li>
+                <li>Round Robin(RR) Scheduling</li>
+                <li>Multiple-Level Queues Scheduling</li>
+            </ul>
+            These algorithms are either non-preemptive or preemptive. 
+            Non-preemptive algorithms are designed so that once a process enters the running state, it cannot be preempted until it completes its allotted time, whereas the preemptive scheduling 
+            is based on priority where a scheduler may preempt a low priority running process anytime when a high priority process enters into a ready state.            
+            <img src="Salgo.PNG" title="Scheduling Algorithems">
+            
+            <div>
+                <h4 class="pre-matter-fcfs" style="padding: 0;"><u>First-Come, First-Served (FCFS) Scheduling</u></h4><br>
+                <p>
+                    It is the simplest algorithm to implement. Processes are executed on first come, first serve basis i.e., the process with the minimal arrival time will get the CPU first.
+                    The lesser the arrival time, the sooner will the process gets the CPU. It is the non-preemptive type of scheduling.
+                    Its implementation is based on FIFO queue. The main drawback about this algorithem is that it is poor in performance as average wait time is high.
+                    For example, Look at the information given in the table 
+                    <br>
+                        <div class="tfcfs">
+                            <table>
+                                <tr>
+                                    <th>Process Id</th>
+                                    <th>Arrivel Time</th>
+                                    <th>Execute Time</th>
+                                    <th>Service Time</th>
+                                </tr>
+                                <tr>
+                                    <td>P0</td>
+                                    <td>0</td>
+                                    <td>5</td>
+                                    <td>3</td>
+                                </tr>
+                                <tr>
+                                    <td>P1</td>
+                                    <td>1</td>
+                                    <td>3</td>
+                                    <td>0</td>
+                                </tr>
+                                <tr>
+                                    <td>P2</td>
+                                    <td>2</td>
+                                    <td>8</td>
+                                    <td>8</td>
+                                </tr>
+                                <tr>
+                                    <td>P3</td>
+                                    <td>3</td>
+                                    <td>6</td>
+                                    <td>16</td>
+                                </tr>
+                                
+                            </table>
+                        </div>
+                        <br>
+                    
+                    <pre>    When we calculate the <i><b>Wait time</b></i> we get,</pre>
+                    <br>
+                        <div class="wfcfs">
+                        <table>
+                            <tr>
+                                <th>Process Id</th>
+                                <th style="width: 400px; height: 50px;">wait time: Service time - Arrivel time</th>
+                                
+                            </tr>
+                            <tr>
+                                <td>P0</td>
+                                <td>0-0=0</td>
+                                
+                            </tr>
+                            <tr>
+                                <td>P1</td>
+                                <td>5-1=4</td>
+                                
+                            </tr>
+                            <tr>
+                                <td>P2</td>
+                                <td>8-2=6</td>
+                                
+                            </tr>
+                            <tr>
+                                <td>P3</td>
+                                <td>16-3=13</td>
+                                
+                            </tr>
+                            
+                        </table></div><br>
+                        <p class="pre-matter"> Here Process P0 has the least waiting time. So, it enters the CPU first. Followed by P1, P2 and P3.</p>
+                        <br><p>   When we make a Gantt Chart we get, </p>
+                        <br><img src="fcfsg.PNG" width="100px">
+                        <br><p class="pre-matter">    Average Wait Time: (0+4+6+13) / 4 = 5.75</p>
+                </p>
+            <p class="pre-matter">   Click<a href="gann.html"><i style="color: coral;"> <u>Here</u></i></a> to try some examples by your self. </p>
+        </div>
+        <div class="SJN">
+            <h4 class="pre-matter-fcfs"><u>Shortest Job Next (SJN)</u></h4><br>
+            
+                The job with the shortest burst time will get the CPU first. 
+                The lesser the burst time, the sooner will the process get the CPU. It is the non-preemptive type of scheduling.
+                It is  easy to implement in Batch systems where required CPU time is known in advance. But impossible to implement in interactive systems where required CPU time is not known, which is a major drawback
+                The processer should know in advance how much time process will take.
+                Like, from the example given below, <br><br>
+                <div class="tfcfs">
+                    <table>
+                        <tr>
+                            <th>Process Id</th>
+                            <th>Arrivel Time</th>
+                            <th>Execute Time</th>
+                            <th>Service Time</th>
+                        </tr>
+                        <tr>
+                            <td>P0</td>
+                            <td>0</td>
+                            <td>5</td>
+                            <td>3</td>
+                        </tr>
+                        <tr>
+                            <td>P1</td>
+                            <td>1</td>
+                            <td>3</td>
+                            <td>0</td>
+                        </tr>
+                        <tr>
+                            <td>P2</td>
+                            <td>2</td>
+                            <td>8</td>
+                            <td>16</td>
+                        </tr>
+                        <tr>
+                            <td>P3</td>
+                            <td>3</td>
+                            <td>6</td>
+                            <td>8</td>
+                        </tr>
+                        
+                    </table></div><br>
+                <br>
+                <p class="pre-matter">When we calculate the <i><b>Wait time</b></i> we get,</p><br>
+                <div class="wfcfs">
+                    <table>
+                        <tr>
+                            <th>Process Id</th>
+                            <th style="width: 400px; height: 50px;">wait time: Service time - Arrivel time</th>
+                            
+                        </tr>
+                        <tr>
+                            <td>P0</td>
+                            <td>0-0=0</td>
+                            
+                        </tr>
+                        <tr>
+                            <td>P1</td>
+                            <td>5-1=4</td>
+                            
+                        </tr>
+                        <tr>
+                            <td>P2</td>
+                            <td>14-2=12</td>
+                            
+                        </tr>
+                        <tr>
+                            <td>P3</td>
+                            <td>8-3=5</td>
+                            
+                        </tr>
+                        
+                    </table>
+                </div><br>
+                <div>
+                    <p class="pre-matter">Here Process P1 has the leat burst time. So, it enters the CPU first. Followed by P0, P3 and P2 as per their burst time values.</p>
+                    <p class="pre-matter">When we make a Gantt Chart we get, </p>
+                    <br>
+                    <img src="sjfg.PNG" ><br>
+                    <p class="pre-matter">Average Wait Time: (0+10+12+2) / 4 = 6</p>
+                </div>
+                <p class="pre-matter>"><a href="ganttchart.html"><i style="color: coral;"> <u>Click here</u></i></a> to try some examples by your self.</p>        
+        </div>
+        <div class="PCS">
+            <h4 class="pre-matter-fcfs"><u>Priority Based Scheduling</u></h4><br>
+        <p>
+            In Priority scheduling, there is a priority number assigned to each process. 
+            In some systems, the lower the number, the higher the priority. While, in the others, the higher the number, the higher will be the priority. The Process with the higher priority among the available processes is given the CPU. 
+            <br>There are <b><i>two types</i></b> of priority scheduling algorithm exists. 
+            One is <b><i>Preemptive priority scheduling</i></b> while the other is <b><i>Non Preemptive Priority scheduling</i></b>.
+            <br>
+            The priority number assigned to each of the process may or may not vary.
+            If the priority number doesn't change itself throughout the process, it is called <b><i>static priority</i></b>, while if it keeps changing itself at the regular intervals, it is called <b><i>dynamic priority</i></b>.
+            <br><br>
+            <div class="npps">
+                <p>
+                    <p>
+                        <h4 class="pre-matter-fcfs"><u>Non Preemptive Priority Scheduling</u></h4>
+                    </p><br>
+                    In the Non Preemptive Priority scheduling, The Processes are scheduled according to the priority number assigned to them. 
+                    Once the process gets scheduled, it will run till the completion.
+                    Generally,<b class="b"><i> the lower the priority number, the higher is the priority of the process</i></b>. 
+                    <br><br>
+                    <table>
+                        <tr>
+                            <th>Process Id</th>
+                            <th>Priority</th>
+                            <th>Arrivel Time</th>
+                            <th>Burst Time</th>
+                        </tr>
+                        <tr>
+                            <td>P1</td>
+                            <td>2</td>
+                            <td>0</td>
+                            <td>3</td>
+                        </tr>
+                        <tr>
+                            <td>P2</td>
+                            <td>6</td>
+                            <td>2</td>
+                            <td>3</td>
+                        </tr>
+                        <tr>
+                            <td>P3</td>
+                            <td>3</td>
+                            <td>1</td>
+                            <td>4</td>
+                        </tr>
+                        <tr>
+                            <td>P4</td>
+                            <td>5</td>
+                            <td>4</td>
+                            <td>2</td>
+                        </tr>
+                        <tr>
+                            <td>P5</td>
+                            <td>7</td>
+                            <td>6</td>
+                            <td>9</td>
+                        </tr>
+                        <tr>
+                            <td>P6</td>
+                            <td>4</td>
+                            <td>5</td>
+                            <td>4</td>
+                        </tr>
+                        <tr>
+                            <td>P7</td>
+                            <td>10</td>
+                            <td>7</td>
+                            <td>10</td>
+                        </tr>
+                    </table>
+                    <br>
+                    The Process P1 arrives at time 0 with the burst time of 3 units and the priority number 2. 
+                    Since No other process has arrived till now hence the OS will schedule it immediately.
+                    <br>
+                    Meanwhile the execution of P1, two more Processes P2 and P3 are arrived. Since the priority of P3 is 3 hence the CPU will execute P3 over P2.<br>
+                    Meanwhile the execution of P3, All the processes get available in the ready queue. The Process with the lowest priority number will be given the priority. Since P6 has priority number assigned as 4 hence it will be executed just after P3.<br>
+                    After P6, P4 has the least priority number among the available processes; it will get executed for the whole burst time.
+                    <img class="npps" src="npps.PNG" >
+                    <br>
+                    <p class="pre-matter">
+                        From the GANTT Chart prepared, we can determine the completion time of every process. 
+                        The turnaround time, waiting time and response time will be determined.<br>
+                        <p class="pre-matter-border" style="width: 300px; text-align: center;"><b class="b">Turn Around Time</b> = <br>Completion Time - Arrival Time   </p><br>
+                        <p class="pre-matter-border" style="width: 300px; text-align: center;"><b class="b">Waiting Time </b>= <br>Turn Around Time - Burst Time  </p>
+                    </p>
+                    <br>
+                    <img src="nppst.PNG"><BR>
+               
+                    <br>Average Wait Time:(0+11+2+7+12+2+18)/7 = 52/7 =7.429<br>
+                </p>
+            </p>
+    </div> 
+    <div>
+    </div>
+    </div>   
+    </div><br>
+    <div class="NextPre">
+        <button id="pre" class="pre" onclick="pre()"></a><i class="fa fa-angle-left" style="font-size:18px"></i>&nbsp;Previous</button>
+        <button id="nxt" class="nxt" onclick="nxt()"></a>Next&nbsp;<i class="fa fa-angle-right" style="font-size:18px"></i></button>
+    </div> 
+        <script type="text/javascript">
+            document.getElementById("pre").onclick = function () {
+            location.href = "schedule.html";
+            };
+            document.getElementById("nxt").onclick = function () {
+            location.href = "cpuSchedule.html";
+            };
+        </script>
+</body>
+</html>

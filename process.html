@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Process Management</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=PT+Serif:ital@1&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia&effect=neon|outline|emboss|shadow-multiple">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <div class="main">
+        <div class="navbar">
+            <div class="nav-container">
+                <div class="icon">
+                    <h2 class="font-effect-outline" style="color: coral;"><a href="index.html">MuRP</a></h2>
+                </div>
+                <div class="menu">
+                    <ul>
+                        <li><a href="index.html">HOME</a></li>
+                        <li><a href="#">ABOUT</a></li>
+                        <li><a href="#">SERVICE</a></li>
+                        <li><a href="#">DESIGN</a></li>
+                        <li><a href="#">CONTACT</a></li>
+                    </ul>
+                </div>
+                <div class="search">
+                    <input class="srch" type="search" name="" placeholder="Type to search">
+                    <a href="#"><input type="button" value="Search"></a>
+                </div>                
+            </div>
+        </div>
+    </div>
+        <h2 class="sub-heading he"><u>Process Management</u>:</h2><br>
+        <div class="matter">
+            <p><b>Process</b> is the execution of a program that performs the actions
+                specified in that program.. It can be defined as an execution unit where a program runs. A Program does nothing unless its instructions are executed by a CPU. A program in execution is called a process. 
+                In order to accomplish its task, process needs the computer resources.<br>
+                <b>Process management</b> involves various tasks like creation, scheduling, termination of processes, and a dead lock. 
+                Process is a program that is under execution, which is an important part of modern-day operating systems. 
+                The OS must allocate resources that enable processes to share and exchange information. 
+                It also protects the resources of each process from other methods and allows synchronization among processes.
+            </p>
+            <p>
+                There may exist more than one process in the system which may require the same resource at the same time. 
+                Therefore, the operating system has to manage all the processes and the resources in a convenient and efficient 
+                way. It handles operations by performing tasks like process scheduling and such as resource allocation.
+            </p>
+            <p>Process memory is divided into <b>four</b> sections:
+                <ol>
+                    <li>The <b>program memory</b> stores the compiled program code, read in from non-volatile storage when the program is launched.</li>
+                    <li>The <b>data section</b> stores global and static variables, allocated and initialized before executing the main program.</li>
+                    <li>The <b>heap section</b> is used to manage dynamic memory allocation inside our program. 
+                        In other words, it is the portion of memory where dynamically allocated memory resides i.e., memory allocation via 
+                        new or malloc and memory deallocation via, delete or free, etc.</li>
+                    <li>The <b>stack section</b> stores local variables defined inside our program or function. Stack space is created for local
+                        variables when they are declared, and the space is freed up when they go out of scope. </li>
+                </ol>
+            </p>
+            <img src="process.PNG" title="Process Management Agriculture">
+            <div>
+                <h4 class="h4"><u>Process State</u>:</h4><br>
+                <ou>
+                    <li><b>New</b>: The process is being created.</li>
+                    <li><b>Running</b>: Instructions are being executed.</li>
+                    <li><b>Waiting</b>: The process is waiting for some event to occur (such as an I/O
+                        completion or reception of a signal).</li>
+                    <li><b>Ready</b> The process is waiting to be assigned to a processor</li>
+                </ou>
+            </div>
+            <div>
+                <h4 class="h4"><u>Process Control Box</u> (PCB):</h4>
+                <br>
+                <p>
+                    Process Control Block is a data structure that contains information of the process related to it. The process control block is also known as a task control block, entry of the process table, etc.
+                    It is very important for process management as the data structuring for processes is done in terms of the PCB.It also defines the current state of the operating system.
+                    <br><img src="pcb.png">
+                    <ou>
+                    <li><b>Process state</b>: A process can be new, ready, running, waiting, etc.</li>
+                    <li><b>Program counter</b>: The program counter lets you know the address of the next instruction, which should be executed for that process.</li>
+                    <li><b>CPU registers</b>: This component includes accumulators, index and general-purpose registers, and information of condition code.</li>
+                    <li><b>CPU scheduling information</b>: This component includes a process priority, pointers for scheduling queues, and various other scheduling parameters.</li>
+                    <li><b>Accounting and business information</b>: It includes the amount of CPU and time utilities like real time used, job or process numbers, etc.</li>
+                    <li><b>Memory-management information</b>: This information includes the value of the base and limit registers, the page, or segment tables. This depends on the memory system, which is used by the operating system.</li>
+                    <li><b>I/O status information</b>: This block includes a list of open files, the list of I/O devices that are allocated to the process, etc.</li>
+                    </ou>
+                </p>
+                <p>
+                    The operating system is responsible for the following activities in connection with Process Management.
+                    <ol>
+                        <li>Scheduling processes and threads on the CPUs.</a></li>
+                        <li>Creating and deleting both user and system processes.</li> 
+                        <li> Suspending and resuming processes.</li> 
+                        <li> Providing mechanisms for process synchronization.</li> 
+                        <li> Providing mechanisms for process communication.</li>
+                    </ol>
+                </p>   
+            </div>
+        </div>
+        <div class="NextPre">
+            <button id="pre" class="pre" onclick="pre()"></a><i class="fa fa-angle-left" style="font-size:18px"></i>&nbsp;&nbsp;Previous</button>
+            <button id="nxt" class="nxt" onclick="nxt()"></a>Next&nbsp;&nbsp;<i class="fa fa-angle-right" style="font-size:18px"></i></button>
+        </div>
+            <script type="text/javascript">
+                document.getElementById("pre").onclick = function () {
+                location.href = "index.html";
+                };
+                document.getElementById("nxt").onclick = function () {
+                location.href = "schedule.html";
+                };
+            </script>
+</body>
+</html>
